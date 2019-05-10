@@ -10,7 +10,10 @@ A user should be able to;
 2. See Github User profiles, including name, photo, repos etc
 
 
-
+## BDD
+| BEHAVIOUR                            | INPUT EXAMPLE                           | OUTPUT EXAMPLES       |
+|--------------------------------------|:------------------------------------:|--------------------------|
+|A users want to view github profiles and enters username | Github username | If the user exist their profile is displayed plus their repos and followers else nothing shows and the page says user doesnt exist |
 
 ## Github Pages
     The UI templates can be tested on [github pages](https://tgalvinjr.github.io/github-IP/)
