@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../users/user.service';
+import { UserService } from '../../users/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
   username: string;
   languages: Object[];
 
-  constructor(private _userService: UserService) {
+  constructor(private _userService: UserService, private http:HttpClient) {
     console.log('Github Component init');
 
 

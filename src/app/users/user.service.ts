@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Repo } from "../repo";
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
 
   private username= 'tgalvinjr';
   languageMap = new Map();
-
-  constructor(private _http: Http) {
+  Http
+  constructor(private _httpClient: HttpClient) {
     console.log('Github service init');
   }
 
-  getUser() {
-    return this._http.get(`https://api.github.com/users/${this.username}`)
-      .pipe(map(res => res.json()));
+  getUser():Observable<Repo[]> {
+    return this._httpClient.get<Repo[]>(`https://api.github.com/users/${this.username}`);
+      // .pipe(map(res => res.json()));
   }
-  getRepos() {
-    return this._http.get(`https://api.github.com/users/${this.username}/repos?per_page=100`)
-      .pipe(map(res => res.json()));
+  getRepos():Observable<Repo[]> {
+    return this._httpClient.get<Repo[]>(`https://api.github.com/users/${this.username}/repos?per_page=100`);
+      // .pipe(map(res => res.json()));
   }
   updateUsername(username: string) {
     this.username = username;
   }
   getLanguages(url: string) {
-    return this._http.get(url).pipe(map(res => res.json()));
+    return this._httpClient.get(url).pipe(map(res => res.json()));
   }
   storeLanguageMap(language: Object) {
     var languageArray = Object.keys(language);
