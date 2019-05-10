@@ -15,7 +15,15 @@ export class UserComponent implements OnInit {
 
   constructor(private _userService: UserService, private http:HttpClient) {
     console.log('Github Component init');
+    this._userService.getUser().subscribe(user => {
+      this.user = user;
+    });
 
+    this._userService.getRepos().subscribe(repos => {
+      this.repos = repos;
+      //console.log(repos);
+      this.calculateLanguages(repos);
+    });
 
   }
 
@@ -29,7 +37,7 @@ export class UserComponent implements OnInit {
       this.repos = repos;
       //console.log(repos);
       this.calculateLanguages(repos);
-    })
+    });
 
   }
   calculateLanguages(repos) {

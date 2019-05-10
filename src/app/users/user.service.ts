@@ -26,7 +26,8 @@ export class UserService {
     this.username = username;
   }
   getLanguages(url: string) {
-    return this._httpClient.get(url).pipe(map(res => res.json()));
+    return this._httpClient.get(url)
+    // .pipe(map(res => res.json()));
   }
   storeLanguageMap(language: Object) {
     var languageArray = Object.keys(language);
